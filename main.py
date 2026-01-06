@@ -32,11 +32,6 @@ async def on_shutdown():
 
 @dp.message(Command("task"))
 async def task_handler(message: types.Message, command: CommandObject):
-    cron = command.args
-    print(f"Received cron: {cron}")
-    # if cron is None:
-    #     await message.answer("No cron supplied")
-    #     return
 
     await my_task.schedule_by_cron(
         source=redis_source,
@@ -46,7 +41,7 @@ async def task_handler(message: types.Message, command: CommandObject):
 
     await message.answer(
         "✅ Cron has been set\n"
-        f"🕓 A task will be ran according to cron \"{cron}\""
+        f"🕓 A task will be ran according to cron: `56 5 * * *`",
     )
 
 
