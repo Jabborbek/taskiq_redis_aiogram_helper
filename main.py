@@ -40,7 +40,7 @@ async def task_handler(message: types.Message, command: CommandObject):
 
     await my_task.schedule_by_cron(
         source=redis_source,
-        cron="56 5 * * *",  # every hour at minute 56
+        cron="56 5 * * *",
         chat_id=message.chat.id,
     )
 
